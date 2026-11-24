@@ -1,0 +1,7 @@
+/* Fotoğraf alanına dokun -> galeri / kamera / dosya. İki alan da sınırsız değiştirilebilir. */
+(()=>{
+'use strict';
+const fields=[['profilSec','pimbru_metin_profil_v4'],['gonderiSec','pimbru_metin_2020_v4']];
+function optimize(file){return new Promise((resolve,reject)=>{const photo=new Image(),url=URL.createObjectURL(file);photo.onload=()=>{try{const dim=1400,scale=Math.min(1,dim/Math.max(photo.naturalWidth,photo.naturalHeight));const cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(photo.naturalWidth*scale));cv.height=Math.max(1,Math.round(photo.naturalHeight*scale));const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height);ctx.drawImage(photo,0,0,cv.width,cv.height);resolve(cv.toDataURL('image/jpeg',.78));}catch(err){reject(err)}finally{URL.revokeObjectURL(url)}};photo.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('Fotoğraf okunamadı.'))};photo.src=url;});}
+for(const [id,key] of fields){const input=document.getElementById(id);input.addEventListener('change',async()=>{const file=input.files?.[0];if(!file)return;try{if(!file.type.startsWith('image/'))throw new Error('Fotoğraf seçmelisin.');const data=await optimize(file);try{localStorage.setItem(key,data)}catch(e){throw new Error('Telefonun tarayıcı depolama alanı dolu. Daha küçük fotoğraf kullan.')}location.reload();}catch(e){alert(e.message||'Fotoğraf yüklenemedi.')}finally{input.value='';}})}
+})();

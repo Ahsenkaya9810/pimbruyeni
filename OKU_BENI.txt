@@ -1,0 +1,10 @@
+PİMBRU – METİN BUHRAN
+
+İlk açılışta fotoğraf bulunmaz: profil dairesi ve 9 Eylül 2020 gönderisi boş görünür.
+Profil dairesine dokun -> fotoğraf seç (telefonda galeri/kamera seçenekleri çıkabilir).
+2020 gönderisinin boş fotoğraf alanına dokun -> fotoğraf seç.
+Fotoğraflara tekrar dokunarak dilediğin zaman değiştir.
+Fotoğraflar bu tarayıcıda saklanır; farklı cihazlara aktarılmaz.
+
+GitHub: ZIP içindeki bütün dosyaları depo ana dizinine yükle (klasörsüz).
+ÖNEMLİ: Eski sürümün kaydedilmiş fotoğrafları otomatik alınmaz; yeni sürüm sıfır fotoğrafla açılır.
